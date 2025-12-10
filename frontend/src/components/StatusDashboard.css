@@ -1,0 +1,25 @@
+.status-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px 16px; /* Increased gap for better spacing */
+    align-items: center;
+}
+
+.status-label {
+    font-weight: 500;
+    color: #a0aec0; /* Gray 400 */
+    text-align: right;
+}
+
+.status-value {
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    color: #e2e8f0; /* Gray 200 */
+}
+
+/* Container for the Server Status LED and Text */
+.server-status-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between LED and text */
+}

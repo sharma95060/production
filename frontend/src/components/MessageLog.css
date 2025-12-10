@@ -1,0 +1,48 @@
+/* === Modern Message Log === */
+
+.log-container {
+    background-color: var(--card-bg);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85em; /* Slightly smaller for density */
+    flex-grow: 1; /* Allow it to fill space */
+    overflow-y: auto;
+    padding: 18px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    color: var(--primary-text);
+    display: flex;
+    flex-direction: column-reverse; /* Shows latest logs at the bottom */
+}
+
+.log-entry {
+    line-height: 1.6;
+    display: flex; /* Use flexbox for alignment */
+    gap: 15px;
+    padding: 2px 0;
+}
+
+.log-meta {
+    flex-shrink: 0;
+    color: #818cf8; /* Indigo 300 - for metadata */
+}
+
+.log-message {
+    white-space: pre-wrap;
+    word-break: break-all;
+    flex-grow: 1;
+}
+
+.log-message.type-INFO {
+    color: var(--secondary-text);
+}
+
+.log-message.type-WARNING {
+    color: #facc15; /* Yellow 400 */
+}
+
+.log-message.type-ERROR {
+    color: #f87171; /* Red 400 */
+}
+.log-message.type-SENT, .log-message.type-RECV {
+    color: #c7d2fe; /* Indigo 200 */
+}

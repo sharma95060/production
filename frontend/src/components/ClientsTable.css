@@ -1,0 +1,91 @@
+/* === Modern Clients Table === */
+
+.table-container {
+    flex-grow: 1; /* Allow table to fill available space */
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--card-bg);
+}
+
+.clients-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+
+.clients-table th,
+.clients-table td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.clients-table th {
+    background-color: #373c43; /* A slightly darker shade */
+    font-weight: 600;
+    color: var(--primary-text);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.clients-table tbody tr {
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+.clients-table tbody tr:hover {
+    background-color: #3a3f44;
+}
+
+.clients-table tbody tr.active-row {
+    background-color: var(--accent-color); /* Use accent color for selection */
+    color: #fff;
+    font-weight: 500;
+}
+
+.clients-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.no-clients-message {
+    text-align: center;
+    padding: 24px;
+    color: var(--secondary-text);
+    font-style: italic;
+}
+
+/* Status specific styling */
+.clients-table .status-connected {
+    color: #4CAF50; /* Green */
+    font-weight: bold;
+}
+
+.clients-table .status-pressed {
+    color: #FFC107; /* Amber/Yellow */
+    font-weight: bold;
+}
+
+.clients-table .status-off {
+    color: #F44336; /* Red */
+    font-weight: bold;
+}
+
+/* Animation for alarming table row */
+@keyframes pulse-bg-red {
+    0% { background-color: var(--card-bg); }
+    50% { background-color: var(--danger-color-dark); }
+    100% { background-color: var(--card-bg); }
+}
+
+.clients-table tbody tr.alarming-row {
+    animation: pulse-bg-red 1.5s infinite alternate;
+    color: white !important; /* Ensure text is visible on dark background */
+}
+
+.clients-table tbody tr.alarming-row:hover {
+    background-color: var(--danger-color); /* Stronger red on hover */
+}
+

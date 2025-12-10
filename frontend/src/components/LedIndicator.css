@@ -1,0 +1,52 @@
+/* === Modern LED Indicator === */
+
+.led {
+    position: relative;
+    width: 24px;   /* Smaller for a more refined look */
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.4s, box-shadow 0.4s;
+    flex-shrink: 0; /* Prevent shrinking in flex layouts */
+}
+
+.led-off {
+    background-color: #374151; /* Gray 700 */
+    border: 1px solid #1f2937; /* Gray 800 */
+    /* box-shadow: inset 0 2px 4px rgba(0,0,0,0.5); */
+}
+
+.led-connected {
+    background-color: #34d399; /* Emerald 400 */
+    border: 1px solid #10b981; /* Emerald 500 */
+    /* A more prominent glow effect */
+    /* box-shadow: 0 0 8px #34d399, 0 0 16px #34d399, 0 0 24px #10b981, inset 0 2px 2px rgba(255,255,255,0.2); */
+}
+
+.led-pressed {
+    background-color: #f87171; /* Red 400 */
+    border: 1px solid #ef4444; /* Red 500 */
+    /* A more prominent glow effect */
+    /* box-shadow: 0 0 8px #f87171, 0 0 16px #f87171, 0 0 24px #ef4444, inset 0 2px 2px rgba(255,255,255,0.2); */
+}
+
+.led-alarm {
+    background-color: #ef4444; /* Red 500 */
+    border: 1px solid #dc2626; /* Red 600 */
+}
+
+
+.led-highlight {
+    /* A more subtle, glossy highlight */
+    position: absolute;
+    top: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 6px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 70%);
+    filter: none;
+}

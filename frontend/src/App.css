@@ -1,0 +1,92 @@
+/* === App Modernization === */
+
+:root {
+  --bg-color: #1a1d22;
+  --sidebar-bg: #21252b;
+  --main-bg: #282c34;
+  --card-bg: #2f333a;
+  --border-color: #444950;
+  --header-text: #eceff4;
+  --primary-text: #d1d5db;
+  --secondary-text: #a6adbb;
+  --accent-color: #6366f1; /* Indigo 500 */
+
+  --danger-color: #ef4444; /* Red 500 */
+  --danger-color-dark: #dc2626; /* Red 600 */
+  --danger-color-light: #fca5a5; /* Red 300 */
+}
+
+.app-container {
+    display: grid;
+    grid-template-columns: 380px 1fr; /* Slightly wider sidebar */
+    grid-template-rows: auto 1fr;
+    gap: 20px;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: var(--bg-color);
+}
+
+.header {
+    grid-column: 1 / -1;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.25em; /* Slightly smaller */
+    color: var(--header-text);
+    font-weight: 600;
+}
+
+.sidebar {
+    grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background-color: var(--sidebar-bg);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    overflow-y: auto;
+}
+
+.main-content {
+    grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background-color: var(--main-bg);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    overflow-y: auto;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.75rem;
+    border: 1px solid var(--border-color);
+    color: var(--secondary-text);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+    font-size: 1.3em;
+    color: var(--primary-text);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+    font-weight: 500;
+}
+.btn-danger {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}

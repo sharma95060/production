@@ -1,0 +1,90 @@
+/* === Modern Control Buttons === */
+
+.btn {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 0.95em;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative; /* Needed for badge positioning */
+}
+
+.badge {
+    background-color: #dc3545;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 8px;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:disabled {
+    background-color: #3a3d42 !important;
+    border-color: #4a4d52 !important;
+    color: #7a7f85 !important;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* --- Button Variants --- */
+
+/* Primary action button */
+.btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
+}
+.btn-primary:hover {
+    background-color: #4f46e5; /* Indigo 600 */
+}
+
+/* Secondary, less prominent button */
+.btn-secondary {
+    background-color: #4b5563; /* Gray 600 */
+    border-color: #6b7280; /* Gray 500 */
+    color: var(--primary-text);
+}
+.btn-secondary:hover {
+    background-color: #6b7280;
+}
+
+/* Destructive action button */
+.btn-danger {
+    background-color: #ef4444; /* Red 500 */
+    border-color: #ef4444;
+    color: #fff;
+}
+.btn-danger:hover {
+    background-color: #dc2626; /* Red 600 */
+}
+.btn-danger:disabled {
+    background-color: #582a2a !important;
+    border-color: #883a3a !important;
+}
+
+
+/* --- Layout --- */
+
+.control-buttons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* Make specific buttons span both columns for emphasis */
+.full-width {
+    grid-column: 1 / -1;
+}

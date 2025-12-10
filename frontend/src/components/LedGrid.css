@@ -1,0 +1,145 @@
+/* === Modern LED Grid === */
+
+.led-grid-container {
+    display: grid;
+    /* Responsive grid that adapts to container width */
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+    height: 180px;
+}
+
+.led-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    position: relative; /* Needed for absolute positioning of children */
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.led-item:hover {
+    background-color: #373c43;
+    border-color: #555c64;
+}
+
+.led-label {
+    margin-top: 12px;
+    text-align: center;
+}
+
+.led-id {
+    display: block;
+    font-weight: 600;
+    color: var(--primary-text);
+    font-size: 0.95em;
+}
+
+.led-ip {
+    display: block;
+    font-size: 0.8em;
+    color: var(--secondary-text);
+    margin-top: 2px;
+}
+
+/* Animation for alarming state */
+@keyframes pulse-red {
+    0% { border-color: var(--danger-color-dark); }
+    50% { border-color: var(--danger-color); }
+    100% { border-color: var(--danger-color-dark); }
+}
+
+.led-item.alarming {
+    border-color: var(--danger-color); /* Initial red border */
+    box-shadow: 0 0 15px var(--danger-color-light);
+    animation: pulse-red 1.5s infinite alternate;
+}
+
+
+.no-clients-message {
+    grid-column: 1 / -1; /* Span all columns */
+    text-align: center;
+    padding: 30px;
+    color: var(--secondary-text);
+    font-style: italic;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem; /* Add some space below the header */
+}
+
+.alarm-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between select and button */
+}
+
+.alarm-controls select {
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-bg);
+  color: var(--primary-text);
+}
+
+.alarm-controls button {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--accent-color);
+  background-color: var(--accent-color);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.alarm-controls button:hover {
+  background-color: #4f46e5; /* A slightly darker shade of the accent color */
+}
+
+.alarm-controls button:disabled {
+  background-color: var(--border-color);
+  border-color: var(--border-color);
+  cursor: not-allowed;
+}
+
+.led-actions {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
+    box-sizing: border-box;
+}
+
+.edit-btn, .delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem; /* Larger icons */
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-btn {
+    color: #a6adbb; /* secondary-text */
+}
+
+.delete-btn {
+    color: #a6adbb; /* secondary-text */
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    color: white;
+}
