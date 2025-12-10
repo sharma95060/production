@@ -125,7 +125,7 @@ function App() {
       socket.off('stop_all_sounds_on_frontend', handleStopAllSounds);
       socket.off('disconnect', handleDisconnect);
     };
-  }, [alarmingClientId]); 
+  }, []); 
   
   const handleResetLeds = () => {
     socket.emit('reset_all_leds');

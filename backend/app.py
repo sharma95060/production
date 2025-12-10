@@ -648,6 +648,11 @@ def add_device():
 
     conn = get_db_connection()
     try:
+        existing_device = conn.execute('SELECT id FROM devices WHERE name = ?', (name,)).fetchone()
+        if existing_device:
+            conn.close()
+            return jsonify({'error': 'Device name already exists'}), 409
+
         cursor = conn.cursor()
         cursor.execute('INSERT INTO devices (name, ip, mac) VALUES (?, ?, ?)', (name, ip, mac))
         conn.commit()
@@ -675,6 +680,15 @@ def update_device(device_id):
 
     conn = get_db_connection()
     try:
+        existing_device = conn.execute('SELECT id FROM devices WHERE name = ? AND id != ?', (name, device_id)).fetchone()
+        if existing_device:
+            conn.close()
+            return jsonify({'error': 'Device name already exists for another device'}), 409
+
+        # --- Get the old IP before updating ---
+        old_device = conn.execute('SELECT ip FROM devices WHERE id = ?', (device_id,)).fetchone()
+        old_ip = old_device['ip'] if old_device else None
+
         cursor = conn.cursor()
         cursor.execute(
             'UPDATE devices SET name = ?, ip = ?, mac = ? WHERE id = ?',
@@ -682,6 +696,16 @@ def update_device(device_id):
         )
         conn.commit()
         conn.close()
+
+        # --- Handle disconnection if IP changed ---
+        if old_ip and old_ip != ip:
+            with state['lock']:
+                if device_id in state['clients']:
+                    log_and_emit(
+                        f"Device {device_id} IP changed from {old_ip} to {ip}. Closing old connection.",
+                        "SERVER"
+                    )
+                    state['clients'][device_id]['socket'].close()
         
         # After updating, fetch all devices again to update the frontend
         update_clients_and_leds_on_frontend()
