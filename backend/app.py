@@ -497,7 +497,7 @@ def handle_send_test_message(data):
     client_id_to_send = data.get('client_id') # can be "all" or a specific ID
     message = json.dumps({
         "type": "test",
-        "message": "Hello from Flask!",
+        "message": "Hello Client!",
         "timestamp": time.time()
     }) + '\n'
 

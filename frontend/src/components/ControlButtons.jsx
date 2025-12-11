@@ -48,16 +48,7 @@ const ControlButtons = ({
         </button>
 
         {/* Destructive actions */}
-        <button
-          onClick={onDisconnect}
-          disabled={!hasActiveClient}
-          className="btn btn-danger"
-        >
-          Disconnect Selected
-        </button>
-        <button onClick={onDisconnectAll} className="btn btn-danger">
-          Disconnect All
-        </button>
+        
       </div>
     </div>
   );
